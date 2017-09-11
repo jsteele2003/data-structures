@@ -17,6 +17,7 @@ for( let i = 1; i < 23; i ++){
     //c & p selector from chrome tools
     var elem = $('body > center > table > tbody > tr > td > table > tbody > tr:nth-child(2) > td > div > table > tbody > tr:nth-child(' + i + ') > td:nth-child(1)')
     .text();
-    console.log(elem.split('\n')[3].trim());
+    elem = elem.split('\n')[3].trim().split(/[,-]/)[0];
+    console.log(elem);
     
 }
