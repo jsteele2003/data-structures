@@ -12,7 +12,7 @@ exports.parsePage = function(pNum){
         var elem = $('body > center > table > tbody > tr > td > table > tbody > tr:nth-child(2) > td > div > table > tbody > tr:nth-child(' + i + ') > td:nth-child(1)')
         .text();
         elem = elem.split('\n')[3].trim().split(/[/(/,-]/)[0];
-        rArray.push(elem);
+        rArray.push(elem + ", New York, NY");
         }
     return rArray;
 }
