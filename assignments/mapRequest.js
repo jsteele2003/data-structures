@@ -8,13 +8,8 @@ var fs = require('fs');
 // printenv | grep NEW_VAR
 
 (function (){
+    
     var apiKey = process.env.mapsAPIKey;
-    
-    var meetingAddresses = pageModule.parsePage("page1");
-    
-    //console.log(meetingAddresses.length);
-    console.log(apiKey);
-    
     var addresses = ["63 Fifth Ave, New York, NY", "16 E 16th St, New York, NY", "2 W 13th St, New York, NY"];
     
     function mapRequest(pAddresses){
