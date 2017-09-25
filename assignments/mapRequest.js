@@ -29,7 +29,7 @@ var fs = require('fs');
             setTimeout(callback, 500);
         }, function asyncCallback() {
             console.log(rData.length);
-            fs.writeFile("data/addresses.txt", JSON.stringify(rData));
+            fs.writeFile("data/addresses.json", JSON.stringify(rData));
         });
     }
     
