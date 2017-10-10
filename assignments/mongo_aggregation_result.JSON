@@ -1,0 +1,24 @@
+[
+    {
+        "_id": "59dd5684d5779e3f969a95c7",
+        "address": "49 Fulton Street, New York, NY",
+        "name": "TRIBECA GROUP @ ST. MARGARET'S HOUSE ",
+        "days": "Tuesdays",
+        "times": "7:30 PM to 8:30 PM",
+        "latLong": {
+            "lat": 40.7081354,
+            "lng": -74.00394519999999
+        }
+    },
+    {
+        "_id": "59dd5684d5779e3f969a95cd",
+        "address": "283 West Broadway, New York, NY",
+        "name": "YOUNG PEOPLE'S STEP ",
+        "days": "Tuesdays",
+        "times": "7:45 PM to 8:45 PM",
+        "latLong": {
+            "lat": 40.7208017,
+            "lng": -74.0048389
+        }
+    }
+]

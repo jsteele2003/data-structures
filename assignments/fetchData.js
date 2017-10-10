@@ -4,17 +4,14 @@ var dbName = 'AA';
 var collName = 'meetings'; 
 
 
-    fs.readFile('./data/addresses.txt', 'utf8', function (err,data) {
+    fs.readFile('./data/meetings.json', 'utf8', function (err,data) {
       if (err) {
         return console.log(err);
       }
       var addressData = JSON.parse(data);
       //some spacing issues, should work levenshtein distance in at some point
-      var uniqueAddresses = _.uniq(addressData, function(object, key, address) { 
-        return object.address;
-      });
       //console.log(uniqueAddresses);
-      dbInsert(uniqueAddresses);
+      dbInsert(addressData);
     });
     
     function dbInsert(docs){
