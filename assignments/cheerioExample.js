@@ -27,10 +27,8 @@ exports.parsePage = function(pNum){
             meetingInfo.push(time[0]);
             meetingInfo.push(time[1]);
             rArray.push(meetingInfo);
-            console.log(meetingInfo);
+            // console.log(meetingInfo);
         })
-
-
     }
         
     //  var timeSelector = $('body > center > table > tbody > tr > td > table > tbody > tr:nth-child(2) > td > div > table > tbody > tr:nth-child(' + 6 + ') > td:nth-child(2)')
