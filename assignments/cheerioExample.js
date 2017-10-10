@@ -8,11 +8,40 @@ exports.parsePage = function(pNum){
     var rArray = [];
     
     for( let i = 1; i < 23; i ++){
-        //c & p selector from chrome tools
-        var elem = $('body > center > table > tbody > tr > td > table > tbody > tr:nth-child(2) > td > div > table > tbody > tr:nth-child(' + i + ') > td:nth-child(1)')
+        var streetSelector = $('body > center > table > tbody > tr > td > table > tbody > tr:nth-child(2) > td > div > table > tbody > tr:nth-child(' + i + ') > td:nth-child(1)')
         .text();
-        elem = elem.split('\n')[3].trim().split(/[/(/,-]/)[0];
-        rArray.push(elem + ", New York, NY");
-        }
+        location = streetSelector.split('\n')
+        name = location[2].trim().split(/[/(/,-]/)[0];
+        street = location[3].trim().split(/[/(/,-]/)[0];
+        
+        var timeSelector = $('body > center > table > tbody > tr > td > table > tbody > tr:nth-child(2) > td > div > table > tbody > tr:nth-child(' + i + ') > td:nth-child(2)')
+        .text();
+        timeSelector = timeSelector.replace(/\s{3,}/g, '\n');
+        timeList = timeSelector.trim().split("\n")
+        // console.log(timeList);
+        timeList.forEach(function(elem){
+            var meetingInfo = [];
+            meetingInfo.push(name);
+            meetingInfo.push(street + ", New York, NY");
+            time = elem.split(/From(.*)Meeting Type/, 2);
+            meetingInfo.push(time[0]);
+            meetingInfo.push(time[1]);
+            rArray.push(meetingInfo);
+            console.log(meetingInfo);
+        })
+
+
+    }
+        
+    //  var timeSelector = $('body > center > table > tbody > tr > td > table > tbody > tr:nth-child(2) > td > div > table > tbody > tr:nth-child(' + 6 + ') > td:nth-child(2)')
+    //     .text();
+    //     timeSelector = timeSelector.replace(/\s{3,}/g, '\n');
+    //     timeList = timeSelector.trim().split("\n")
+    //     console.log(timeList);
+    //     time = timeList[10].split(/From(.*)Meeting Type/);
+    //     console.log(time);
+        
     return rArray;
 }
+
+

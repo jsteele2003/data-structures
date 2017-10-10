@@ -1,21 +1,19 @@
 var fs = require('fs');
 var _ = require('underscore');
 var dbName = 'AA'; 
-var collName = 'locations'; 
+var collName = 'meetings'; 
 
-var addressData;
-var uniqueAddresses;
 
     fs.readFile('./data/addresses.txt', 'utf8', function (err,data) {
       if (err) {
         return console.log(err);
       }
-      addressData = JSON.parse(data);
+      var addressData = JSON.parse(data);
       //some spacing issues, should work levenshtein distance in at some point
-      uniqueAddresses = _.uniq(addressData, function(object, key, address) { 
+      var uniqueAddresses = _.uniq(addressData, function(object, key, address) { 
         return object.address;
       });
-      console.log(uniqueAddresses);
+      //console.log(uniqueAddresses);
       dbInsert(uniqueAddresses);
     });
     

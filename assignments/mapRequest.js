@@ -33,7 +33,7 @@ var fs = require('fs');
         });
     }
     
-    mapRequest(pageModule.parsePage("page1"));
-    // mapRequest(addresses);
+    // mapRequest(pageModule.parsePage("page1"));
+    pageModule.parsePage("page1");
 
 }());
