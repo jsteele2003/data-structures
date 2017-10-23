@@ -23,11 +23,13 @@ exports.parsePage = function(pNum){
             var meetingInfo = [];
             meetingInfo.push(name);
             meetingInfo.push(street + ", New York, NY");
-            time = elem.split(/From(.*)Meeting Type/, 2);
+            time = elem.split(/From(.*)Meeting Type/);
+            console.log(time)
             meetingInfo.push(time[0].trim());
-            meetingInfo.push(time[1].trim());
+            details  = time[1].split("Special Interest")
+            // meetingInfo.push(time[1].trim());
             rArray.push(meetingInfo);
-            console.log(meetingInfo);
+            // console.log(meetingInfo);
         })
     }
         

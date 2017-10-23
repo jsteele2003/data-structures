@@ -41,8 +41,8 @@ var fs = require('fs');
     console.log(meetings[0]);
     var mAddresses = [];
     meetings.forEach(function(elem){
-        mAddresses.push(elem[1]);
+        mAddresses.push(elem);
     })
-    mapRequest(meetings);
+    //mapRequest(meetings);
 
 }());
