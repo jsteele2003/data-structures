@@ -17,5 +17,5 @@ CREATE TABLE sensorData  (
 );
 
 INSERT INTO sensorData (acc_x, acc_y, acc_z, knockTime, time)
-VALUES ('0', '2000', '1500', 2017-10-22 13:10:02.0474381, DEFAULT);
+VALUES ('0', '2000', '1500', 2017-10-22 13:10:02, DEFAULT);
 
