@@ -19,7 +19,6 @@ var getAndWriteData = function() {
     // Make request to the Particle API to get sensor values
     request(device_url, function(error, response, body) {
         // Store sensor values in variables
-        console.log(body);
         var device_json_string = JSON.parse(body).result;
         var accX = JSON.parse(device_json_string).x;
         var accY = JSON.parse(device_json_string).y;
@@ -31,11 +30,10 @@ var getAndWriteData = function() {
         const client = new Client(db_credentials);
         client.connect();
 
-        // Construct a SQL statement to insert sensor values into a table
+        //in the process of swapping out sensors, this is what is currently publishing from the photon, but will update it this week
         var thisQuery = "INSERT INTO sensorData VALUES (" + accX + "," + accY + "," + accZ + ", DEFAULT);";
         console.log(thisQuery); // for debugging
 
-        // Connect to the AWS RDS Postgres database and insert a new row of sensor values
         client.query(thisQuery, (err, res) => {
             console.log(err, res);
             client.end();
@@ -43,6 +41,5 @@ var getAndWriteData = function() {
     });
 };
 
-// write a new row of sensor data every five minutes
-// setInterval(getAndWriteData, 300000);
-getAndWriteData();
+// write a new row of sensor data every thirty seconds
+setInterval(getAndWriteData, 30000);
