@@ -9,10 +9,8 @@ SQL Table:
 
 CREATE TABLE sensorData  (
     ID int,
-    acc_x int,
-    acc_y int,
-    acc_z int,
-    knockTime timestamp,
+    temp int,
+    light int,
     time timestamp DEFAULT current_timestamp
 );
 
