@@ -4,7 +4,7 @@ var dbName = 'AA';
 var collName = 'meetings'; 
 
 
-    fs.readFile('./data/meetings.json', 'utf8', function (err,data) {
+    fs.readFile('../data/processedMeetings/meetings.json', 'utf8', function (err,data) {
       if (err) {
         return console.log(err);
       }

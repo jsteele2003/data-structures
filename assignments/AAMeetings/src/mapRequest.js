@@ -41,7 +41,7 @@ var fs = require('fs');
             setTimeout(callback, 50);
         }, function asyncCallback() {
             console.log(rData);
-            fs.writeFile("../data/proccessedMeetings/meetings.json", JSON.stringify(rData));
+            fs.writeFile("../data/processedMeetings/meetings.json", JSON.stringify(rData));
         });
     }
     var meetings = [];

@@ -1,5 +1,4 @@
-# data-structures-assignments
-repository for Data Structures coursework, Data Visualisation Msc
+# data-structures-sensorData
 
 Relational Sensor Database:
 
