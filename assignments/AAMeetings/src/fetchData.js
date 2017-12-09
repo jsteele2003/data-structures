@@ -7,6 +7,7 @@ var collName = 'meetings';
     fs.readFile('../data/processedMeetings/meetings.json', 'utf8', function (err,data) {
       if (err) {
         return console.log(err);
+        
       }
       var addressData = JSON.parse(data);
       //some spacing issues, should work levenshtein distance in at some point

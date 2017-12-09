@@ -1,6 +1,6 @@
 var request = require('request'); // npm install request
 var async = require('async'); // npm install async
-var pageModule = require('./cheerioExample');
+var pageModule = require('./cheerioParse');
 var fs = require('fs');
 
 (function (){
@@ -11,7 +11,7 @@ var fs = require('fs');
         
         async.eachSeries(pMeetings, function asyncIterator(value, callback) {
             var apiRequest = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + value["locationAddress"].split(' ').join('+') + '&key=' + apiKey;
-            var thisMeeting = new Object;
+            var thisMeeting = {};
             thisMeeting.address = value["locationAddress"];
             thisMeeting.meetingName = value["meetingName"];
             thisMeeting.day = value["dayStr"];
@@ -40,7 +40,6 @@ var fs = require('fs');
             });
             setTimeout(callback, 50);
         }, function asyncCallback() {
-            console.log(rData);
             fs.writeFile("../data/processedMeetings/meetings.json", JSON.stringify(rData));
         });
     }
@@ -48,6 +47,5 @@ var fs = require('fs');
     for(var i = 1; i<11; i++){
         meetings = meetings.concat(pageModule.parsePage(i));
     }
-    console.log(meetings.slice(0,3).length);
-    mapRequest(meetings);
+    // mapRequest(meetings);
 }());
