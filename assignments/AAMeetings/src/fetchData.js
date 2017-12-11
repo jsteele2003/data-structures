@@ -26,9 +26,10 @@ var collName = 'meetings';
         if (err) {return console.dir(err);}
 
         var collection = db.collection(collName);
+        console.log(collection);
 
         // THIS IS WHERE THE DOCUMENT(S) IS/ARE INSERTED TO MONGO:
-        collection.insert(docs);
+        // collection.insert(docs);
         db.close();
 
     }); //MongoClient.connect

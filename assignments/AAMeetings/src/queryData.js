@@ -8,6 +8,9 @@ var url = 'mongodb://' + process.env.IP + ':27017/' + dbName;
 
 // Retrieve
 var MongoClient = require('mongodb').MongoClient;
+var moment = require('moment-timezone');
+console.log(moment.tz(new Date(), "America/New_York").days());
+console.log(moment.tz(new Date(), "America/New_York").hours());
 
 MongoClient.connect(url, function(err, db) {
     if (err) {return console.dir(err);}
@@ -15,14 +18,31 @@ MongoClient.connect(url, function(err, db) {
     var collection = db.collection(collName);
     
     collection.aggregate([
-                   { 
-                     $match: {
-                        $and:[
-                            {
-                            }
-                         ]
-                     }
-                   }
+
+                {  $group : { _id :{
+                          address : "$address",
+                          latLong : "$latLong",
+                          meetingName : "$meetingName",
+                          meetingDetails : "$meetingDetails",
+                          wheelchairAccess : "$wheelchairAccess"
+                        },
+                        day : { $push : "$day" },
+                        dayInt : { $push : "$dayInt" },
+                        time : { $push : "$time" },
+                        timeInt : { $push : "$timeInt" }, 
+                        type : { $push : "$meetingType" }
+                  }
+                 },
+                 { $group : { _id :{
+                    address : "$_id.address",
+                    latLong : '$_id.latLong',
+                     wheelchairAccess : '$_id.wheelchairAccess'
+                 },
+                    groups : {
+                        $push : { group: "$_id.meetingName", day : "$day", time : "$time", type : '$type'},
+                    }
+                 }
+                 },
                   ]).toArray(function(err, docs) {
                     if (err) {console.log(err)}
                     

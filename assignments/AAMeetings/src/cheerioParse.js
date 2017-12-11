@@ -21,12 +21,15 @@ exports.parsePage = function(pNum){
         return 'body > center > table > tbody > tr > td > table > tbody > tr:nth-child(2) > td > div > table > tbody > tr:nth-child(' + pIndex + ')';
     }
     
+    function cleanAddr(pString){
+        return pString.replace("E.", "East ").replace("W."," West ");
+    }
+    
     var i = 1;
     while($(updatePath(i)) != ""){
         
         //accumulate meeting details from cheerio data into object
-        var tempItem = {};
-        tempItem["wheelchairAccess"] = false;
+        var tempItem = { wheelchairAccess : false};
         var streetPath = $(updatePath(i) + '> td:nth-child(1)').text();
         var timePath = $(updatePath(i) + '> td:nth-child(2)').text().replace(/\s{3,}/g, '\n');
         var locationDetails = streetPath.split('\n');
@@ -37,7 +40,7 @@ exports.parsePage = function(pNum){
         }
         
         tempItem['meetingName'] = locationDetails[2].trim().split(/[,-]/)[0].trim();
-        tempItem['locationAddress'] = locationDetails[3].trim().split(/- | \. |,|@|\(/)[0].trim() + ", New York, NY";
+        tempItem['locationAddress'] = cleanAddr(locationDetails[3].trim()).split(/- | \. |,|@|\(/)[0].trim() + ", New York, NY";
         
         //index 9 can either be meeting details or wheelchair bool
         if(locationDetails[9].trim() == "Wheelchair access"){
@@ -58,8 +61,8 @@ exports.parsePage = function(pNum){
             if(elem[0] == elem[0].toLowerCase()){
                 goodData = false;
             }
-            var time = elem.split(/From|Special Interest|Meeting Type/), typeDetails;
-
+            var time = elem.split(/From|Special Interest|Meeting Type/);
+            var typeDetails;
             if(goodData == true){
                 //we know these values must exist already - without optionals, will have to check for the others
                 var meeting = {
@@ -69,9 +72,7 @@ exports.parsePage = function(pNum){
                     "dayStr" : time[0].trim(),
                     "dayInt" : dayEnum[time[0].trim()],
                     "timeStr" : time[1].split("to")[0].trim()
-                    
                 };
-                
                 if('locationName' in tempItem){
                     meeting['locationName'] = tempItem['locationName'];
                 }
@@ -91,7 +92,7 @@ exports.parsePage = function(pNum){
                     if(meeting['timeStr'].includes("12")){
                         meeting['timeInt'] = 12;
                     } else{
-                        meeting['timeInt'] = (parseInt(time[1]) + 12) % 24;
+                        meeting['timeInt'] = (parseInt(time[1]) + 12);
                     }
                 }
                 if(time[2] != undefined){
@@ -105,9 +106,7 @@ exports.parsePage = function(pNum){
                         }
                     }
                 }
-                if(meeting["locationName"] == "Theatre 80"){
-                console.log(meeting["locationAddress"] + " " + pNum);
-                }
+                // console.log(meeting['locationAddress'])
                 rArray.push(meeting);
             }
         });

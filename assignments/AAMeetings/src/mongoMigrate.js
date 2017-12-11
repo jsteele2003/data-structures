@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-var meetings = JSON.parse(fs.readFileSync('../data/processedMeetings/toMigrate.JSON'));
+var meetings = JSON.parse(fs.readFileSync('../data/processedMeetings/migrate.json'));
 
 // Connection URL
 var url = 'mongodb://' + process.env.mongoIP;
