@@ -12,3 +12,17 @@ In graphically representing this data, I wanted to create a fairly granular log 
 
 ![alt text](https://github.com/jsteele2003/data-structures/blob/master/assignments/sensorProject/assets/sensorInterface.jpg "Sensor Interface")
 
+The heatmap will take the general form of a table, tracking the recorded temperature and light according to minute, and then grouping the data across a longer time period. The details for the enumerated annotations within the diagram are as follows: 
+
+I. The Y-axis will map to time of day, running from 12:00AM-12:00AM. 
+
+II. The X-axis will be capable of either grouping the day-long data into week-long intervals, or simply represent them as consecutive days. Each discrete element on the Y-axis would be split into two values, one each for temperature and light
+
+III. The right sidebar will primarily function as a legend for mapping the temperature and light heatmap gradients to their physical correlates. I plan on using two different sequential colour scales to create the two heatmaps, with progressively darker hues mapping to more intense values 
+
+IV. Above the heatmap legend will be a pair of radio buttons, allowing the user to group the daily data by week, or track day-to-dya with no aggregation
+
+V & VI. In order to provide qualitative context, there will be interactive markers at the top of each y-axis element, providing on-hover tooltips with information on events that may have impacted the values seen in the coming time interval.
+Likewise, at notable periods of intensity/general interest over the span of the hourly values, tooltips will appear with more granular information and context on why such values may have appeared.
+
+VII & VIII. Since the sensors are writing data to the database every 30 seconds, minute-to-minute temp and light data could be tracked as "slivers" of colour on the X-axis hourly scale.
