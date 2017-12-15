@@ -16,11 +16,11 @@ The heatmap will take the general form of a table, tracking the recorded tempera
 
 I. The Y-axis will map to time of day, running from 12:00AM-12:00AM. 
 
-II. The X-axis will be capable of either grouping the day-long data into week-long intervals, or simply represent them as consecutive days. Each discrete element on the Y-axis would be split into two values, one each for temperature and light
+II. The X-axis will be capable of either grouping the day-long data into week-long intervals, or simply represent them as consecutive days. Each discrete element on the Y-axis would be split into two values, one each for temperature and light.
 
-III. The right sidebar will primarily function as a legend for mapping the temperature and light heatmap gradients to their physical correlates. I plan on using two different sequential colour scales to create the two heatmaps, with progressively darker hues mapping to more intense values 
+III. The right sidebar will primarily function as a legend for mapping the temperature and light heatmap gradients to their physical correlates. I plan on using two different sequential colour scales to create the two heatmaps, with progressively darker hues mapping to more intense values. 
 
-IV. Above the heatmap legend will be a pair of radio buttons, allowing the user to group the daily data by week, or track day-to-dya with no aggregation
+IV. Above the heatmap legend will be a pair of radio buttons, allowing the user to group the daily data by week, or track day-to-dya with no aggregation.
 
 V & VI. In order to provide qualitative context, there will be interactive markers at the top of each y-axis element, providing on-hover tooltips with information on events that may have impacted the values seen in the coming time interval.
 Likewise, at notable periods of intensity/general interest over the span of the hourly values, tooltips will appear with more granular information and context on why such values may have appeared.
